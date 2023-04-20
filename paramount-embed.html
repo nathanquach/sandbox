@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<head>
+  <title>Paramount Embed Player</title>
+  <style>
+    input[type="text"] {
+      display: flex;
+      width: 100%;
+      max-width: 800px;
+    }
+  </style>
+</head>
+<body>
+  <h2>Player configurations</h2>
+  <strong>Edit configuration and click Load button to render Paramount player</strong>
+  <input type="text" id="embedscript" required autofocus value="https://stage-www-mtv-com.webplex.vmn.io/scripts/paramount-embed.js">
+  <input type="text" id="mgid" required value="mgid:arc:showvideo:mtv.com:fd3477c4-0826-48ba-bac1-7525d331635c">
+  <div>Show UI: <input type="checkbox" id="showui" checked></div>
+  <div>Autoplay: <input type="checkbox" id="autoplay" checked></div>
+  <div>Allow Fullscreen: <input type="checkbox" id="allowfullscreen" checked></div>
+  <button onclick="load()">Load</button>
+
+  <h2>Paramount Player</h2>
+  <div id="player"></div>
+
+  <script>
+    const embed = {
+      // required
+      containerId: 'player',
+      mgid: document.getElementById('mgid').value,
+      // optional
+      showUI: document.getElementById('showui').checked,
+      autoplay: document.getElementById('autoplay').checked,
+      allowFullscreen: document.getElementById('allowfullscreen').checked,
+      height: '100%',
+      width: '100%'
+    }
+
+    let embedScript = document.createElement('script')
+    embedScript.src = document.getElementById('embedscript').value
+    document.head.appendChild(embedScript)
+
+    function load() {
+      // reset container
+      document.getElementById('player').innerHTML = null
+
+      // Update embed configuration
+      embed.mgid = document.getElementById('mgid').value
+      embed.showUI = document.getElementById('showui').checked
+      embed.autoplay = document.getElementById('autoplay').checked
+      embed.allowFullscreen = document.getElementById('allowfullscreen').checked
+
+      // Reload script
+      document.head.removeChild(embedScript)
+      embedScript = document.createElement('script')
+      embedScript.src = document.getElementById('embedscript').value
+      document.head.appendChild(embedScript)
+
+      // Render player
+      Paramount.embed(embed)
+    }
+  </script>
+</body>
