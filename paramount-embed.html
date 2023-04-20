@@ -2,24 +2,61 @@
 <head>
   <title>Paramount Embed Player</title>
   <style>
-    input[type="text"] {
-      display: flex;
-      width: 100%;
-      max-width: 800px;
-    }
+    input[type=text], select {
+    width: 100%;
+    padding: 6px 10px;
+    margin: 0 0 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+
+  button {
+    display: block;
+    background-color: #4CAF50;
+    color: white;
+    padding: 6px 10px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  input[type=submit]:hover {
+    background-color: #45a049;
+  }
+
+  div {
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 20px;
+  }
+
+  #player {
+    aspect-ratio: 16 / 9;
+  }
   </style>
 </head>
 <body>
-  <h2>Player configurations</h2>
-  <strong>Edit configuration and click Load button to render Paramount player</strong>
-  <input type="text" id="embedscript" required autofocus value="https://stage-www-mtv-com.webplex.vmn.io/scripts/paramount-embed.js">
-  <input type="text" id="mgid" required value="mgid:arc:showvideo:mtv.com:fd3477c4-0826-48ba-bac1-7525d331635c">
-  <div>Show UI: <input type="checkbox" id="showui" checked></div>
-  <div>Autoplay: <input type="checkbox" id="autoplay" checked></div>
-  <div>Allow Fullscreen: <input type="checkbox" id="allowfullscreen" checked></div>
-  <button onclick="load()">Load</button>
+  <h2>Embed configurations</h2>
+  <div>
+    <label for="embedscript">Embed script</label>
+    <input type="text" id="embedscript" required autofocus value="https://stage-www-mtv-com.webplex.vmn.io/scripts/paramount-embed.js">
+    <label for="mgid">MGID</label>
+    <input type="text" id="mgid" required value="mgid:arc:showvideo:mtv.com:43aadfb7-9b83-4e61-adde-885e952945a1">
+    <label for="showui">Show UI</label> 
+    <input type="checkbox" id="showui" checked>
+    <br/>
+    <label for="autoplay">Autoplay</label> 
+    <input type="checkbox" id="autoplay" checked>
+    <br/>
+    <label for="allowfullscreen">Allow Fullscreen</label>
+    <input type="checkbox" id="allowfullscreen" checked>
+    <button onclick="load()">Load player</button>
+  </div>
 
-  <h2>Paramount Player</h2>
+  <h2>Player</h2>
   <div id="player"></div>
 
   <script>
