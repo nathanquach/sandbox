@@ -57,6 +57,7 @@
   </div>
 
   <h2>Player</h2>
+  <div id="player-status"></div>
   <div id="player"></div>
 
   <script>
@@ -79,6 +80,7 @@
     function load() {
       // reset container
       document.getElementById('player').innerHTML = null
+      document.getElementById('player-status').innerHTML = 'Player is loading'
 
       // Update embed configuration
       embed.mgid = document.getElementById('mgid').value
@@ -92,8 +94,11 @@
       embedScript.src = document.getElementById('embedscript').value
       document.head.appendChild(embedScript)
 
-      // Render player
-      Paramount.embed(embed)
+      embedScript.onload = () => {
+        // Render player
+        Paramount.embed(embed)
+        document.getElementById('player-status').innerHTML = null
+      }
     }
   </script>
 </body>
