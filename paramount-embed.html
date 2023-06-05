@@ -53,6 +53,24 @@
     <br/>
     <label for="allowfullscreen">Allow Fullscreen</label>
     <input type="checkbox" id="allowfullscreen" checked>
+    <br/>
+    <label for="muted">Mute on start</label>
+    <input type="checkbox" id="muted">
+    <br/>
+    <label for="endContentStrategy">End content strategy </label>
+    <input type="input" id="endContentStrategy" value="replay" placeholder="replay|loop">
+    <br/>
+    <label for="appName">Report overwrite - App Name </label>
+    <input type="input" id="appName" value="" placeholder="optional">
+    <br/>
+    <label for="channel">Report overwrite - Channel </label>
+    <input type="input" id="channel" value="" placeholder="optional">
+    <br/>
+    <label for="csid">Ad overwrite - CSID </label>
+    <input type="input" id="csid" value="" placeholder="optional">
+    <br/>
+    <label for="caid">Ad overwrite - CAID </label>
+    <input type="input" id="caid" value="" placeholder="optional">
     <button onclick="load()">Load player</button>
   </div>
 
@@ -66,9 +84,6 @@
       containerId: 'player',
       mgid: document.getElementById('mgid').value,
       // optional
-      ui: document.getElementById('showui').checked,
-      autoplay: document.getElementById('autoplay').checked,
-      allowFullscreen: document.getElementById('allowfullscreen').checked,
       height: '100%',
       width: '100%'
     }
@@ -87,6 +102,12 @@
       embed.ui = document.getElementById('showui').checked
       embed.autoplay = document.getElementById('autoplay').checked
       embed.allowFullscreen = document.getElementById('allowfullscreen').checked
+      embed.muted = document.getElementById('muted').checked
+      embed.endContentStrategy = document.getElementById('endContentStrategy').value
+      embed.appName = document.getElementById('appName').value
+      embed.channel = document.getElementById('channel').value
+      embed.csid = document.getElementById('csid').value
+      embed.caid = document.getElementById('caid').value
 
       // Reload script
       document.head.removeChild(embedScript)
