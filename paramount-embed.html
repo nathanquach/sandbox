@@ -1,91 +1,145 @@
 <!DOCTYPE html>
+
 <head>
   <title>Paramount Embed Player</title>
   <style>
-    input[type=text], select {
-    width: 100%;
-    padding: 6px 10px;
-    margin: 0 0 8px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-  }
+    .form {
+      display: flex;
+      flex-direction: column;
+    }
 
-  button {
-    display: block;
-    background-color: #4CAF50;
-    color: white;
-    padding: 6px 10px;
-    margin: 8px 0;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
+    input[type=text],
+    input[type=range],
+    select {
+      width: 100%;
+      padding: 6px 10px;
+      margin: 0 0 8px 0;
+      display: inline-block;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
 
-  input[type=submit]:hover {
-    background-color: #45a049;
-  }
+    button {
+      display: block;
+      background-color: #4CAF50;
+      color: white;
+      padding: 6px 10px;
+      margin: 8px 0;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
 
-  div {
-    border-radius: 5px;
-    background-color: #f2f2f2;
-    padding: 20px;
-  }
+    input[type=submit]:hover {
+      background-color: #45a049;
+    }
 
-  #player {
-    aspect-ratio: 16 / 9;
-  }
+    .player-container {
+      aspect-ratio: 16 / 9;
+      padding: 10px;
+      margin: 10px auto;
+      border: 1px solid #ccc;
+      max-width: 800px;
+    }
   </style>
 </head>
+
 <body>
   <h2>Embed configurations</h2>
-  <div>
-    <label for="embedscript">Embed script</label>
-    <input type="text" id="embedscript" required autofocus value="https://stage-www-mtv-com.webplex.vmn.io/scripts/paramount-embed.js">
-    <label for="mgid">MGID</label>
-    <input type="text" id="mgid" required value="mgid:arc:showvideo:mtv.com:43aadfb7-9b83-4e61-adde-885e952945a1">
-    <label for="showui">Show UI</label> 
-    <input type="checkbox" id="showui" checked>
-    <br/>
-    <label for="autoplay">Autoplay</label> 
-    <input type="checkbox" id="autoplay" checked>
-    <br/>
-    <label for="allowfullscreen">Allow Fullscreen</label>
-    <input type="checkbox" id="allowfullscreen" checked>
-    <br/>
-    <label for="muted">Mute on start</label>
-    <input type="checkbox" id="muted">
-    <br/>
-    <label for="endContentStrategy">End content strategy </label>
-    <input type="input" id="endContentStrategy" value="replay" placeholder="replay|loop">
-    <br/>
-    <label for="appName">Report overwrite - App Name </label>
-    <input type="input" id="appName" value="" placeholder="optional">
-    <br/>
-    <label for="channel">Report overwrite - Channel </label>
-    <input type="input" id="channel" value="" placeholder="optional">
-    <br/>
-    <label for="csid">Ad overwrite - CSID </label>
-    <input type="input" id="csid" value="" placeholder="optional">
-    <br/>
-    <label for="caid">Ad overwrite - CAID </label>
-    <input type="input" id="caid" value="" placeholder="optional">
+  <div class="form">
+    <span>
+      <label for="embedscript">Embed script</label>
+      <input type="text" id="embedscript" required autofocus
+        value="https://stage-www-mtv-com.webplex.vmn.io/scripts/paramount-embed.js">
+    </span>
+    <span>
+      <label for="mgid">MGID</label>
+      <input type="text" id="mgid" required value="mgid:arc:showvideo:mtv.com:43aadfb7-9b83-4e61-adde-885e952945a1">
+    </span>
+    <h3>Player Container</h3>
+    <span>
+      <label for="containerId">Container Id</label>
+      <input type="text" id="containerId" required value="a" placeholder="a|b|c">
+    </span>
+    <span>
+      <label for="height">Height</label>
+      <input type="range" id="height" min="0" max="100" value="100">
+    </span>
+    <span>
+      <label for="width">Width</label>
+      <input type="range" id="width" min="0" max="100" value="100">
+    </span>
+    <h3>Player Settings</h3>
+    <span>
+      <input type="checkbox" id="showui" checked>
+      <label for="showui">Show UI</label>
+    </span>
+    <span>
+      <input type="checkbox" id="autoplay" checked>
+      <label for="autoplay">Autoplay</label>
+    </span>
+    <span>
+      <input type="checkbox" id="allowfullscreen" checked>
+      <label for="allowfullscreen">Allow Fullscreen</label>
+    </span>
+    <span>
+      <input type="checkbox" id="muted">
+      <label for="muted">Mute on start</label>
+    </span>
+    <span>
+      <label for="playerProfile">Player profile</label>
+      <input type="text" id="playerProfile" value="" placeholder="optional">
+    </span>
+    <span>
+      <label for="endContentStrategy">End content strategy</label>
+      <input type="text" id="endContentStrategy" value="replay" placeholder="replay|loop">
+    </span>
+    <h3>Report overwrites</h3>
+    <span>
+      <label for="appName">App Name</label>
+      <input type="text" id="appName" value="" placeholder="optional">
+    </span>
+    <span>
+      <label for="channel">Channel</label>
+      <input type="text" id="channel" value="" placeholder="optional">
+    </span>
+    <h3>Ad overwrites</h3>
+    <span>
+      <label for="csid">CSID</label>
+      <input type="text" id="csid" value="" placeholder="optional">
+    </span>
+    <span>
+      <label for="caid">CAID</label>
+      <input type="text" id="caid" value="" placeholder="optional">
+    </span>
+    <span>
+      <label for="TPZadRuleId">TPZadRuleId</label>
+      <input type="text" id="TPZadRuleId" value="" placeholder="optional">
+    </span>
+    <h3>User consent settings</h3>
+    <span>
+      <label for="optanonConsent">Optanon Consent</label>
+      <input type="text" id="optanonConsent" value="" placeholder="optional">
+    </span>
+    <span>
+      <input type="checkbox" id="waitForConsent">
+      <label for="waitForConsent">Wait for Consent</label>
+    </span>
     <button onclick="load()">Load player</button>
   </div>
 
   <h2>Player</h2>
   <div id="player-status"></div>
-  <div id="player"></div>
+  <div class='player-container' id="a">A</div>
+  <div class='player-container' id="b">B</div>
+  <div class='player-container' id="c">C</div>
 
   <script>
     const embed = {
       // required
-      containerId: 'player',
+      containerId: document.getElementById('containerId').value,
       mgid: document.getElementById('mgid').value,
-      // optional
-      height: '100%',
-      width: '100%'
     }
 
     let embedScript = document.createElement('script')
@@ -94,11 +148,15 @@
 
     function load() {
       // reset container
-      document.getElementById('player').innerHTML = null
-      document.getElementById('player-status').innerHTML = 'Player is loading'
+      document.getElementById('player-status').innerHTML = 'Loading player'
+      document.querySelectorAll('.player-container').forEach(element => {
+        element.innerHTML = null
+      })
 
       // Update embed configuration
       embed.mgid = document.getElementById('mgid').value
+      embed.height = `${document.getElementById('height').value}%`
+      embed.width = `${document.getElementById('width').value}%`
       embed.ui = document.getElementById('showui').checked
       embed.autoplay = document.getElementById('autoplay').checked
       embed.allowFullscreen = document.getElementById('allowfullscreen').checked
@@ -108,6 +166,10 @@
       embed.channel = document.getElementById('channel').value
       embed.csid = document.getElementById('csid').value
       embed.caid = document.getElementById('caid').value
+      embed.waitForConsent = document.getElementById('waitForConsent').value
+      embed.optanonConsent = document.getElementById('optanonConsent').value
+      embed.TPZadRuleId = document.getElementById('TPZadRuleId').value
+      embed.playerProfile = document.getElementById('playerProfile').value
 
       // Reload script
       document.head.removeChild(embedScript)
