@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 
 <head>
-  <title>Paramount Embed Player</title>
+  <title>Sandbox to test Paramount Webplex embed player</title>
   <style>
     .form {
       display: flex;
@@ -46,15 +46,17 @@
 </head>
 
 <body>
-  <h2>Embed configurations</h2>
+  <header>
+    <h2>Paramount Webplex embed player</h2>
+  </header>
   <div class="form">
     <span>
-      <label for="embedscript">Embed script</label>
+      <label for="embedscript">Embed script URL</label>
       <input type="text" id="embedscript" required autofocus
         value="https://stage-www-mtv-com.webplex.vmn.io/scripts/paramount-embed.js">
     </span>
     <span>
-      <label for="mgid">MGID</label>
+      <label for="mgid">Video mgid</label>
       <input type="text" id="mgid" required value="mgid:arc:showvideo:mtv.com:43aadfb7-9b83-4e61-adde-885e952945a1">
     </span>
     <h3>Iframe settings</h3>
@@ -73,7 +75,7 @@
     <h3>Player settings</h3>
     <span>
       <input type="checkbox" id="showui" checked>
-      <label for="showui">Show UI</label>
+      <label for="showui">Enable user interface</label>
     </span>
     <span>
       <input type="checkbox" id="autoplay" checked>
@@ -81,7 +83,7 @@
     </span>
     <span>
       <input type="checkbox" id="allowfullscreen" checked>
-      <label for="allowfullscreen">Allow Fullscreen</label>
+      <label for="allowfullscreen">Allow fullscreen</label>
     </span>
     <span>
       <input type="checkbox" id="muted">
@@ -97,7 +99,7 @@
     </span>
     <h3>Report overwrites</h3>
     <span>
-      <label for="appName">App Name</label>
+      <label for="appName">App name</label>
       <input type="text" id="appName" value="" placeholder="optional">
     </span>
     <span>
@@ -119,21 +121,25 @@
     </span>
     <h3>User consent settings</h3>
     <span>
-      <label for="optanonConsent">Optanon Consent</label>
+      <label for="optanonConsent">Optanon consent level</label>
       <input type="text" id="optanonConsent" value="" placeholder="optional">
     </span>
     <span>
       <input type="checkbox" id="waitForConsent">
-      <label for="waitForConsent">Wait for Consent</label>
+      <label for="waitForConsent">Wait for user's consent</label>
     </span>
     <button onclick="loadPlayer()">Load player</button>
   </div>
 
   <h2>Player</h2>
   <div id="player-status"></div>
-  <div class='player-container' id="a" aria-label="container a">container a</div>
-  <div class='player-container' id="b" aria-label="container b">container b</div>
-  <div class='player-container' id="c" aria-label="container c">container c</div>
+  <div class='player-container' id="a" aria-label="Container A">Container A</div>
+  <div class='player-container' id="b" aria-label="Container B">Container B</div>
+  <div class='player-container' id="c" aria-label="Container C">Container C</div>
+
+  <footer>
+    <a href="https://github.com/nathanquach/sandbox/blob/main/paramount-embed.html">Edit this page on GitHub</a>
+  </footer>
 
   <script>
     const embed = {}
