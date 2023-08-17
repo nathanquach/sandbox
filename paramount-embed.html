@@ -126,7 +126,7 @@
       <input type="checkbox" id="waitForConsent">
       <label for="waitForConsent">Wait for Consent</label>
     </span>
-    <button onclick="load()">Load player</button>
+    <button onclick="loadPlayer()">Load player</button>
   </div>
 
   <h2>Player</h2>
@@ -137,19 +137,16 @@
 
   <script>
     const embed = {}
+    updateEmbed()
 
     let embedScript = document.createElement('script')
     embedScript.src = document.getElementById('embedscript').value
     document.head.appendChild(embedScript)
 
-    function load() {
-      // reset player container
-      document.getElementById('player-status').innerHTML = 'Loading player'
-      document.querySelectorAll('.player-container').forEach(element => {
-        element.innerHTML = element.getAttribute('aria-label')
-      })
-
-      // Update embed configuration
+    /**
+     * Update embed configuration object with data from the form
+     */
+    function updateEmbed() {
       embed.containerId = document.getElementById('containerId').value
       embed.mgid = document.getElementById('mgid').value
       embed.height = `${document.getElementById('height').value}%`
@@ -167,6 +164,20 @@
       embed.optanonConsent = document.getElementById('optanonConsent').value
       embed.TPZadRuleId = document.getElementById('TPZadRuleId').value
       embed.playerProfile = document.getElementById('playerProfile').value
+    }
+
+    /**
+     * Reload paramount-embed.js and render the player
+     */
+    function loadPlayer() {
+      // reset player container
+      document.getElementById('player-status').innerHTML = 'Loading player'
+      document.querySelectorAll('.player-container').forEach(element => {
+        element.innerHTML = element.getAttribute('aria-label')
+      })
+
+      // Update embed configuration
+      updateEmbed()
 
       // Reload script
       document.head.removeChild(embedScript)
