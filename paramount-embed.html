@@ -136,11 +136,7 @@
   <div class='player-container' id="c">C</div>
 
   <script>
-    const embed = {
-      // required
-      containerId: document.getElementById('containerId').value,
-      mgid: document.getElementById('mgid').value,
-    }
+    const embed = {}
 
     let embedScript = document.createElement('script')
     embedScript.src = document.getElementById('embedscript').value
@@ -154,6 +150,7 @@
       })
 
       // Update embed configuration
+      embed.containerId = document.getElementById('containerId').value
       embed.mgid = document.getElementById('mgid').value
       embed.height = `${document.getElementById('height').value}%`
       embed.width = `${document.getElementById('width').value}%`
