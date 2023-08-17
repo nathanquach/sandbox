@@ -57,7 +57,7 @@
       <label for="mgid">MGID</label>
       <input type="text" id="mgid" required value="mgid:arc:showvideo:mtv.com:43aadfb7-9b83-4e61-adde-885e952945a1">
     </span>
-    <h3>Player Container</h3>
+    <h3>Iframe Settings</h3>
     <span>
       <label for="containerId">Container Id</label>
       <input type="text" id="containerId" required value="a" placeholder="a|b|c">
@@ -131,9 +131,9 @@
 
   <h2>Player</h2>
   <div id="player-status"></div>
-  <div class='player-container' id="a">A</div>
-  <div class='player-container' id="b">B</div>
-  <div class='player-container' id="c">C</div>
+  <div class='player-container' id="a" aria-label="container a">container a</div>
+  <div class='player-container' id="b" aria-label="container b">container b</div>
+  <div class='player-container' id="c" aria-label="container c">container c</div>
 
   <script>
     const embed = {}
@@ -143,10 +143,10 @@
     document.head.appendChild(embedScript)
 
     function load() {
-      // reset container
+      // reset player container
       document.getElementById('player-status').innerHTML = 'Loading player'
       document.querySelectorAll('.player-container').forEach(element => {
-        element.innerHTML = null
+        element.innerHTML = element.getAttribute('aria-label')
       })
 
       // Update embed configuration
@@ -163,7 +163,7 @@
       embed.channel = document.getElementById('channel').value
       embed.csid = document.getElementById('csid').value
       embed.caid = document.getElementById('caid').value
-      embed.waitForConsent = document.getElementById('waitForConsent').value
+      embed.waitForConsent = document.getElementById('waitForConsent').checked
       embed.optanonConsent = document.getElementById('optanonConsent').value
       embed.TPZadRuleId = document.getElementById('TPZadRuleId').value
       embed.playerProfile = document.getElementById('playerProfile').value
