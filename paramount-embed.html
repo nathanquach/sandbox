@@ -46,9 +46,7 @@
 </head>
 
 <body>
-  <header>
-    <h2>Paramount Webplex embed player</h2>
-  </header>
+  <h1>Paramount Webplex embed player configuration</h1>
   <div class="form">
     <span>
       <label for="embedscript">Embed script URL</label>
@@ -59,7 +57,7 @@
       <label for="mgid">Video mgid</label>
       <input type="text" id="mgid" required value="mgid:arc:showvideo:mtv.com:43aadfb7-9b83-4e61-adde-885e952945a1">
     </span>
-    <h3>Iframe settings</h3>
+    <h2>Iframe options</h2>
     <span>
       <label for="containerId">Container Id</label>
       <input type="text" id="containerId" required value="a" placeholder="a|b|c">
@@ -72,7 +70,7 @@
       <label for="width">Width</label>
       <input type="range" id="width" min="0" max="100" value="100">
     </span>
-    <h3>Player settings</h3>
+    <h2>Player options</h2>
     <span>
       <input type="checkbox" id="showui" checked>
       <label for="showui">Enable user interface</label>
@@ -97,7 +95,7 @@
       <label for="endContentStrategy">End content strategy</label>
       <input type="text" id="endContentStrategy" value="replay" placeholder="replay|loop">
     </span>
-    <h3>Report overwrites</h3>
+    <h2>Reporting overwrites</h2>
     <span>
       <label for="appName">App name</label>
       <input type="text" id="appName" value="" placeholder="optional">
@@ -106,7 +104,7 @@
       <label for="channel">Channel</label>
       <input type="text" id="channel" value="" placeholder="optional">
     </span>
-    <h3>Ad overwrites</h3>
+    <h2>Advertisement overwrites</h2>
     <span>
       <label for="csid">CSID</label>
       <input type="text" id="csid" value="" placeholder="optional">
@@ -119,7 +117,7 @@
       <label for="TPZadRuleId">TPZadRuleId</label>
       <input type="text" id="TPZadRuleId" value="" placeholder="optional">
     </span>
-    <h3>User consent settings</h3>
+    <h2>User consent options</h2>
     <span>
       <label for="optanonConsent">Optanon consent level</label>
       <input type="text" id="optanonConsent" value="" placeholder="optional">
@@ -131,7 +129,7 @@
     <button onclick="loadPlayer()">Load player</button>
   </div>
 
-  <h2>Player</h2>
+  <h1>Result</h1>
   <div id="player-status"></div>
   <div class='player-container' id="a" aria-label="Container A">Container A</div>
   <div class='player-container' id="b" aria-label="Container B">Container B</div>
