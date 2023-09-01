@@ -2,6 +2,7 @@
 
 <head>
   <title>Sandbox to test Paramount Webplex embed player</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
   <style>
     .form {
       display: flex;
@@ -127,6 +128,7 @@
       <label for="waitForConsent">Wait for user's consent</label>
     </span>
     <button onclick="loadPlayer()">Load player</button>
+    <button onclick="removePlayer()">Remove player</button>
   </div>
 
   <h1>Result</h1>
@@ -168,18 +170,22 @@
       embed.optanonConsent = document.getElementById('optanonConsent').value
       embed.TPZadRuleId = document.getElementById('TPZadRuleId').value
       embed.playerProfile = document.getElementById('playerProfile').value
+
+      sanitizeEmbed()
+    }
+
+    function sanitizeEmbed() {
+      Object.entries(embed).forEach(([key, value]) => {
+        if(typeof value === 'undefined' || value === '' || value === null) {
+          delete(embed[key])
+        }
+      })
     }
 
     /**
      * Reload paramount-embed.js and render the player
      */
     function loadPlayer() {
-      // reset player container
-      document.getElementById('player-status').innerHTML = 'Loading player'
-      document.querySelectorAll('.player-container').forEach(element => {
-        element.innerHTML = element.getAttribute('aria-label')
-      })
-
       // Update embed configuration
       updateEmbed()
 
@@ -194,6 +200,14 @@
         Paramount.embed(embed)
         document.getElementById('player-status').innerHTML = null
       }
+    }
+
+    function removePlayer() {
+      // reset player container
+      document.getElementById('player-status').innerHTML = 'Loading player'
+      document.querySelectorAll('.player-container').forEach(element => {
+        element.innerHTML = element.getAttribute('aria-label')
+      })
     }
   </script>
 </body>
