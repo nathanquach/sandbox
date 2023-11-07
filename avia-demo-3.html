@@ -8,6 +8,8 @@
   <script src="https://avia.cbsivideo.com/avia-js/2.23.1/player/avia.min.js"></script>
   <script src="https://avia.cbsivideo.com/avia-js/2.23.1/plugins/hls/avia.hls.min.js"></script>
   <script src="https://avia.cbsivideo.com/avia-js/2.23.1/plugins/ui/avia.ui.min.js"></script>
+  <script src="https://avia.cbsivideo.com/avia-js/2.23.1/plugins/gam/avia.gam.min.js"></script>
+  <script src="//imasdk.googleapis.com/js/sdkloader/ima3.js"></script>
   <style>
     .player-container-wrapper {
       width: 100%;
@@ -19,7 +21,7 @@
 </head>
 
 <body>
-  <h1>Avia player with HLS stream</h1>
+  <h1>Avia player with IMA SDK DAI stream (server-side ad injection)</h1>
   <div class="player-container-wrapper">
     <div id="player-container"></div>
   </div>
@@ -29,15 +31,20 @@
       container: '#player-container', 
       plugins: [
         avia.hls.plugin(),
-        avia.ui.plugin()
+        avia.ui.plugin(),
+        avia.gam.plugin()
       ]
     }).then(player => {
       // expose player instance for API demo purpose
       window.player = player
-      // attach player resource loading a HLS stream
+      // attach player resource to load a IMA SDK DAI stream
       player.attachResource({
-        location: {
-          mediaUrl: 'https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8'
+        ad: {
+          ssai: {
+            contentSourceId: '2528370',
+            videoId: 'tears-of-steel',
+            format: avia.VideoFormat.HLS
+          }
         }
       })
     }).catch(e => console.error(e))

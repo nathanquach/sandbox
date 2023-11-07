@@ -8,6 +8,8 @@
   <script src="https://avia.cbsivideo.com/avia-js/2.23.1/player/avia.min.js"></script>
   <script src="https://avia.cbsivideo.com/avia-js/2.23.1/plugins/hls/avia.hls.min.js"></script>
   <script src="https://avia.cbsivideo.com/avia-js/2.23.1/plugins/ui/avia.ui.min.js"></script>
+  <script src="https://avia.cbsivideo.com/avia-js/2.23.1/plugins/gam/avia.gam.min.js"></script>
+  <script src="//imasdk.googleapis.com/js/sdkloader/ima3.js"></script>
   <style>
     .player-container-wrapper {
       width: 100%;
@@ -19,7 +21,7 @@
 </head>
 
 <body>
-  <h1>Avia player with HLS stream</h1>
+  <h1>Avia player with HLS stream and GAM Client-side ad injection</h1>
   <div class="player-container-wrapper">
     <div id="player-container"></div>
   </div>
@@ -29,15 +31,24 @@
       container: '#player-container', 
       plugins: [
         avia.hls.plugin(),
-        avia.ui.plugin()
+        avia.ui.plugin(),
+        avia.gam.plugin()
       ]
     }).then(player => {
       // expose player instance for API demo purpose
       window.player = player
-      // attach player resource loading a HLS stream
+      // attach player resource to load a HLS stream with CSAI ad enabled
       player.attachResource({
         location: {
           mediaUrl: 'https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8'
+        },
+        ad: {
+          csai: {
+            adCallUrl: 'https://pubads.g.doubleclick.net/gampad/ads?' +
+              'iu=/21775744923/external/single_ad_samples&sz=640x480&' +
+              'cust_params=sample_ct%3Dlinear&ciu_szs=300x250%2C728x90&' +
+              'gdfp_req=1&output=vast&unviewed_position_start=1&env=vp&impl=s&correlator='
+          }
         }
       })
     }).catch(e => console.error(e))
