@@ -1,0 +1,34 @@
+
+<!DOCTYPE html>
+<head>
+  <meta charset="utf-8">
+  <style>
+    #fselem {
+      background-color: #fcc;
+      padding: 10px;
+      text-align: center;
+      margin: 10px;
+    }
+  </style>
+  <title>Fullscreen API Demo</title>
+</head>
+
+<body>
+  <div id="fselem">Click the button to make me fullscreen</div>
+  <button id="anchor">Click!</button>
+  
+  <script>
+    document.onwebkitfullscreenerror = function() {
+      alert("Unable to request fullscreen");
+    };
+  
+    var button = document.querySelector('button');
+    button.addEventListener('click', function() {
+      const elem = document.querySelector('#fselem');
+      if (elem.webkitRequestFullscreen)
+        elem.webkitRequestFullscreen();
+      else
+        elem.requestFullscreen();
+    });
+  </script>
+</body>

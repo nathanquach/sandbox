@@ -9,31 +9,10 @@
       flex-direction: column;
     }
 
-    input[type=text],
-    input[type=range],
-    select {
+    iframe {
       width: 100%;
-      padding: 6px 10px;
-      margin: 0 0 8px 0;
-      display: inline-block;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-      box-sizing: border-box;
-    }
-
-    button {
-      display: block;
-      background-color: #4CAF50;
-      color: white;
-      padding: 6px 10px;
-      margin: 8px 0;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-    }
-
-    input[type=submit]:hover {
-      background-color: #45a049;
+      height: 100%;
+      border:0;
     }
 
     .player-container {
@@ -48,10 +27,18 @@
 
 <body>
   <div class="player-container" id="a" aria-label="Container A">
-    <iframe src="https://stage-www-mtv-com.webplex.vmn.io/embed/mgid:arc:showvideo:mtv.com:43aadfb7-9b83-4e61-adde-885e952945a1?pageURL=nathanquach.github.io%2Fsandbox%2Fparamount-embed.html&amp;autoplay=true&amp;ui=true&amp;muted=false&amp;endContentStrategy=replay" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true" style="width: 100%; height: 100%; border: 0px;" title="webplex page"></iframe>
+    <iframe src="https://stage-www-mtv-com.webplex.vmn.io/embed/mgid:arc:showvideo:mtv.com:43aadfb7-9b83-4e61-adde-885e952945a1?pageURL=nathanquach.github.io%2Fsandbox%2Fparamount-embed.html&amp;autoplay=true&amp;ui=true&amp;muted=false&amp;endContentStrategy=replay" allowfullscreen title="webplex page"></iframe>
   </div>
 
   <div class="player-container" id="b" aria-label="Container B">
-    <iframe src="https://sindresorhus.com/screenfull/" allowfullscreen="true" webkitallowfullscreen="true" mozallowfullscreen="true" style="width: 100%; height: 100%; border: 0px;" title="screenfull page"></iframe>
+    <iframe src="https://sindresorhus.com/screenfull/" allowfullscreen="true" allowfullscreen title="screenfull page"></iframe>
+  </div>
+
+  <div class="player-container" id="d" aria-label="Container D">
+    <iframe src="//a.featurepolicy.rocks/fullscreen.html" allowfullscreen style="width: 100%; height: 100%; border: 0px;" title="fullscreen test page"></iframe>
+  </div>
+
+  <div class="player-container" id="e" aria-label="Container E">
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/gYfL_Ea5QaA?si=Qcx4oVnS8bF-cX3_" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
   </div>
 </body>
